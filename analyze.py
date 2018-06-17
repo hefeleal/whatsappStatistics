@@ -170,7 +170,6 @@ def print_user_ranking(msgs):
 	i = 1
 	for r in ranking.most_common():
 		print("{:02}. {} - {}".format(i, r[1], r[0]))
-		#print("{},{}".format(r[0], r[1]))
 		i += 1
 
 # prints a ranking of which digit (1-9) is most often the very
@@ -189,7 +188,6 @@ def print_first_digit_distribution(msgs):
 	i = 1
 	for r in ranking.most_common():
 		print("{:02}. {} ({:1.1f}%) - Ziffer {}".format(i, r[1], (r[1]/total_count)*100, r[0]))
-		#print("#{},{}".format(r[0], r[1]))
 		i += 1
 	print("In total", total_count, "numbers")
 
@@ -262,7 +260,6 @@ def print_word_count(msgs):
 	i = 1
 	for r in ranking.most_common():
 		print("{:02}. {} - {}".format(i, r[1], r[0]))
-		#print("{}".format(r[0]), end=" ")
 		i += 1
 
 # prints a ranking of users who get @-mentioned most often,
@@ -323,7 +320,7 @@ if __name__ == "__main__":
 	parser.add_argument("-ur", "--user-ranking", help="print a ranking of users who sent the most messages", action="store_true")
 	parser.add_argument("-wr", "--word-ranking", help="print a ranking of users who sent the most messages that contain a specified word or phrase", dest="search_term", default=None)
 	parser.add_argument("-mr", "--medias-ranking", help="print a ranking of users who sent the most media messages", action="store_true")
-	parser.add_argument("-dmr", "--deleted-messages_ranking", help="prints a ranking of users who sent the most deleted messages", action="store_true")
+	parser.add_argument("-dmr", "--deleted-messages_ranking", help="print a ranking of users who sent the most deleted messages", action="store_true")
 	parser.add_argument("-mt", "--messages-by-time", help="print how many messages were sent during each hour of the day", action="store_true")
 	parser.add_argument("-mw", "--messages-by-weekday", help="print how many messages were sent for each day of the week", action="store_true")
 	parser.add_argument("-lc", "--letter-count", help="print a ranking of how often each letter is used", action="store_true")

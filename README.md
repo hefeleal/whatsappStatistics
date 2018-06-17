@@ -33,7 +33,7 @@ See `python3 analyze.py -h` for a list of statistics that can be shown:
                             print a ranking of users who sent the most media
                             messages
       -dmr, --deleted-messages_ranking
-                            prints a ranking of users who sent the most deleted
+                            print a ranking of users who sent the most deleted
                             messages
       -mt, --messages-by-time
                             print how many messages were sent during each hour of
