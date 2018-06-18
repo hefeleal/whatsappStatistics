@@ -320,7 +320,7 @@ if __name__ == "__main__":
 	parser.add_argument("-ur", "--user-ranking", help="print a ranking of users who sent the most messages", action="store_true")
 	parser.add_argument("-wr", "--word-ranking", help="print a ranking of users who sent the most messages that contain a specified word or phrase", dest="search_term", default=None)
 	parser.add_argument("-mr", "--medias-ranking", help="print a ranking of users who sent the most media messages", action="store_true")
-	parser.add_argument("-dmr", "--deleted-messages_ranking", help="print a ranking of users who sent the most deleted messages", action="store_true")
+	parser.add_argument("-dmr", "--deleted-messages-ranking", help="print a ranking of users who sent the most deleted messages", action="store_true")
 	parser.add_argument("-mt", "--messages-by-time", help="print how many messages were sent during each hour of the day", action="store_true")
 	parser.add_argument("-mw", "--messages-by-weekday", help="print how many messages were sent for each day of the week", action="store_true")
 	parser.add_argument("-lc", "--letter-count", help="print a ranking of how often each letter is used", action="store_true")
