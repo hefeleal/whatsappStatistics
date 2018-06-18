@@ -61,4 +61,4 @@ See `python3 analyze.py -h` for a list of statistics that can be shown:
                             print the longest message
 
 ## WhatsApp Chat Text File
-To get a text file of your WhatsApp chat, follow [these instructions](https://faq.whatsapp.com/en/android/23756533/).
+To get a text file of your WhatsApp chat, follow [these instructions](https://faq.whatsapp.com/en/android/23756533/). Export without media.
