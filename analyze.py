@@ -32,13 +32,14 @@ class Message():
 # fail and when exporting on iOS, the format might be
 # different.
 def parse_file(filename):
-	with open(filename, "r") as f:
+	with open(filename, "r", encoding="utf8") as f:
 		raw_content = f.readlines()
 	msgs = []
 	for c in raw_content:
 		regex = re.findall("([0-3][0-9]\.[0-1][0-9]\.[0-9][0-9], [0-2][0-9]:[0-5][0-9]) - (.*?)(: .*)?\n", c, re.S)
 		if len(regex) == 0:
-			msgs[len(msgs)-1].what += "\n" + c[:-1]
+			if len(msgs) > 0:
+				msgs[len(msgs)-1].what += "\n" + c[:-1]
 		elif regex[0][2] == "":
 			msgs.append(Message(datetime.datetime.strptime(regex[0][0], "%d.%m.%y, %H:%M"), "xxx", regex[0][1], True, False, False, False, False))
 		else:
@@ -46,13 +47,13 @@ def parse_file(filename):
 			is_deleted = False
 			is_contact = False
 			is_location = False
-			if regex[0][2][2:] == "<Medien weggelassen>":
+			if regex[0][2][2:] == "<Medien ausgeschlossen>":
 				is_media = True
-			elif regex[0][2][2:] == "Diese Nachricht wurde gelöscht":
+			elif regex[0][2][2:] == "Diese Nachricht wurde gelöscht.":
 				is_deleted = True
 			elif regex[0][2][-22:] == ".vcf (Datei angehängt)":
 				is_contact = True
-			elif regex[0][2][2:] == "Live-Standort wird geteilt" or regex[0][2][2:36] == "Standort: https://maps.google.com/":
+			elif regex[0][2][2:] == "Live-Standort wird geteilt." or regex[0][2][2:36] == "Standort: https://maps.google.com/":
 				is_location = True
 			msgs.append(Message(datetime.datetime.strptime(regex[0][0], "%d.%m.%y, %H:%M"), regex[0][1], regex[0][2][2:], False, is_media, is_deleted, is_contact, is_location))
 	return msgs
@@ -207,11 +208,11 @@ def print_day_ranking(msgs):
 
 # prints a ranking of users who sent the most deleted messages
 def print_deleted_messages_ranking(msgs):
-	print_word_ranking(msgs, "Diese Nachricht wurde gelöscht")
+	print_word_ranking(msgs, "Diese Nachricht wurde gelöscht.")
 
 # prints a ranking of users who sent the most media messages
 def print_medias_ranking(msgs):
-	print_word_ranking(msgs, "<Medien weggelassen>")
+	print_word_ranking(msgs, "<Medien ausgeschlossen>")
 
 # prints a ranking of users who sent the most messages that contain
 # a specified word or phrase. This function considers media- and deleted-,
