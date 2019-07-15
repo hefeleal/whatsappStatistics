@@ -296,6 +296,7 @@ def print_hashtag_ranking(msgs):
 	i = 1
 	for r in ranking.most_common():
 		print("{:02}. {} - #{}".format(i, r[1], r[0]))
+		i += 1
 	print("In total", total_count, "hashtags")
 
 # prints the longest message
